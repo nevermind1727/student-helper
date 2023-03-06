@@ -1,0 +1,15 @@
+/* Стилизуем скроллбар */
+::-webkit-scrollbar {
+  width: 8px; /* Ширина скроллбара */
+}
+
+/* Стилизуем ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: #2d3748; /* Цвет ползунка */
+  border-radius: 4px; /* Радиус углов ползунка */
+}
+
+/* Стилизуем трек скроллбара */
+::-webkit-scrollbar-track {
+  background-color: #171923; /* Цвет трека */
+}
