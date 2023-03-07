@@ -103,15 +103,24 @@ const SignUpForm = () => {
   };
 
   const handleGoogleSignUp = () => {
-    window.open("http://localhost:3001/auth/google", "_self");
+    window.open(
+      "https://student-helper-backend.onrender.com/auth/google",
+      "_self"
+    );
   };
 
   const handleFacebookSignUp = () => {
-    window.open("http://localhost:3001/auth/facebook", "_self");
+    window.open(
+      "https://student-helper-backend.onrender.com/auth/facebook",
+      "_self"
+    );
   };
 
   const handleLinkedinSignUp = () => {
-    window.open("http://localhost:3001/auth/linkedin", "_self");
+    window.open(
+      "https://student-helper-backend.onrender.com/auth/linkedin",
+      "_self"
+    );
   };
 
   return (

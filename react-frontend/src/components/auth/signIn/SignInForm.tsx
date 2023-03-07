@@ -76,15 +76,24 @@ const SignInForm = () => {
   };
 
   const handleGoogleSignIn = () => {
-    window.open("http://localhost:3001/auth/google", "_self");
+    window.open(
+      "https://student-helper-backend.onrender.com/auth/google",
+      "_self"
+    );
   };
 
   const handleFacebookSignIn = () => {
-    window.open("http://localhost:3001/auth/facebook", "_self");
+    window.open(
+      "https://student-helper-backend.onrender.com/auth/facebook",
+      "_self"
+    );
   };
 
   const handleLinkedinSignIn = () => {
-    window.open("http://localhost:3001/auth/linkedin", "_self");
+    window.open(
+      "https://student-helper-backend.onrender.com/auth/linkedin",
+      "_self"
+    );
   };
 
   return (

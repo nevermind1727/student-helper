@@ -4,7 +4,7 @@ import { SignInUserParams, User } from "../utils/types";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://localhost:3001/auth`,
+    baseUrl: `https://student-helper-backend.onrender.com/auth`,
     credentials: "include",
   }),
   endpoints: (builder) => ({

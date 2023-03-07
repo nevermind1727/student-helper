@@ -47,7 +47,7 @@ export class AuthController {
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
-    res.redirect('http://localhost:3000/');
+    res.redirect('https://student-helper-react.onrender.com');
     return user;
   }
 
@@ -65,7 +65,7 @@ export class AuthController {
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
-    res.redirect('http://localhost:3000/');
+    res.redirect('https://student-helper-react.onrender.com');
     return user;
   }
 
@@ -83,7 +83,7 @@ export class AuthController {
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
-    res.redirect('http://localhost:3000/');
+    res.redirect('https://student-helper-react.onrender.com');
     return user;
   }
 
