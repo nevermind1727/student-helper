@@ -5,7 +5,7 @@ export const usersApi = createApi({
   reducerPath: "usersApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `https://student-helper-backend.onrender.com/users`,
-    credentials: "include",
+    // credentials: "include",
   }),
   endpoints: (builder) => ({
     createUser: builder.mutation<User, SignInUserParams>({
