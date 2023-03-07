@@ -48,7 +48,6 @@ export class AuthController {
       httpOnly: true,
     });
     res.redirect('https://student-helper-react.onrender.com');
-    return user;
   }
 
   @UseGuards(FacebookOauthGuard)
@@ -66,7 +65,6 @@ export class AuthController {
       httpOnly: true,
     });
     res.redirect('https://student-helper-react.onrender.com');
-    return user;
   }
 
   @UseGuards(LinkedinOauthGuard)
@@ -84,7 +82,6 @@ export class AuthController {
       httpOnly: true,
     });
     res.redirect('https://student-helper-react.onrender.com');
-    return user;
   }
 
   @UseGuards(JwtAuthGuard)
