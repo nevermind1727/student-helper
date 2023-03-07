@@ -16,7 +16,7 @@ export class UsersController {
     return this.usersService.createUser(createUserDto);
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   async getUser(@GetUser() user: UserResponse): Promise<UserResponse> {
     return user;
