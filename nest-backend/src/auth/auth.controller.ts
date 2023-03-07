@@ -47,7 +47,7 @@ export class AuthController {
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
-    res.redirect('https://student-helper-react.onrender.com');
+    return res.redirect('https://student-helper-react.onrender.com');
   }
 
   @UseGuards(FacebookOauthGuard)
