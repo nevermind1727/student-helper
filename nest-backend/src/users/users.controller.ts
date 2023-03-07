@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { Request } from 'express';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { GetUser } from 'src/decorators/get-user.decorator';
 import { UserResponse } from 'src/utils/types';
@@ -18,7 +19,11 @@ export class UsersController {
 
   // @UseGuards(JwtAuthGuard)
   @Get()
-  async getUser(@GetUser() user: UserResponse): Promise<UserResponse> {
+  async getUser(
+    @GetUser() user: UserResponse,
+    @Req() req: Request,
+  ): Promise<UserResponse> {
+    console.log(req);
     return user;
   }
 }
