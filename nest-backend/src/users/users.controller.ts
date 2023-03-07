@@ -23,7 +23,7 @@ export class UsersController {
     @GetUser() user: UserResponse,
     @Req() req: Request,
   ): Promise<UserResponse> {
-    console.log(req);
+    console.log(req.user);
     return user;
   }
 }

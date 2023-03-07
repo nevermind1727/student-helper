@@ -23,7 +23,7 @@ export class GoogleOauthStrategy extends PassportStrategy(Strategy, 'google') {
   ) {
     const { emails } = profile;
     const _id = new Types.ObjectId();
-
+    console.log('Inside google strategy');
     return {
       username: emails[0].value,
       _id,
