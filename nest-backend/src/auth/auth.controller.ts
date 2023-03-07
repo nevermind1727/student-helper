@@ -94,5 +94,6 @@ export class AuthController {
       expires: new Date(Date.now() + 100),
       httpOnly: true,
     });
+    return;
   }
 }
