@@ -33,9 +33,6 @@ function App() {
       .split("; ")
       .find((cookie) => cookie.startsWith("user="))
       .split("=")[1];
-    if (!user) {
-      return;
-    }
     if (user) {
       dispatch(setAuthUser({ user: JSON.parse(user) }));
       console.log(user);
