@@ -48,7 +48,7 @@ export class AuthController {
       httpOnly: true,
     });
     console.log('user before', user);
-    res.redirect('https://student-helper-two.vercel.app/');
+    // res.redirect('https://student-helper-two.vercel.app/');
     console.log('user after', user);
   }
 
