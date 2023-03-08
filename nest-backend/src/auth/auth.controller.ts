@@ -47,7 +47,9 @@ export class AuthController {
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
-    return res.redirect('https://student-helper-react.onrender.com');
+    console.log('user before', user);
+    res.redirect('https://student-helper-react.onrender.com');
+    console.log('user after', user);
   }
 
   @UseGuards(FacebookOauthGuard)
@@ -94,7 +96,7 @@ export class AuthController {
     return;
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Post('/getAuth')
   async getAuth(
     @GetUser() user: UserResponse,
