@@ -47,8 +47,11 @@ export class AuthController {
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
+    res.cookie('user', user, {
+      maxAge: 60000 * 60 * 24 * 7,
+    });
     console.log('user before', user);
-    // res.redirect('https://student-helper-two.vercel.app/');
+    res.redirect('https://student-helper-two.vercel.app/');
     console.log('user after', user);
   }
 
