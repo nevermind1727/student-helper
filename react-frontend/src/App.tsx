@@ -17,18 +17,6 @@ function App() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    // getAuth(undefined)
-    //   .unwrap()
-    //   .then((payload) => {
-    //     console.log(payload);
-    //     if (payload) {
-    //       dispatch(setAuthUser({ user: payload }));
-    //     }
-    //     navigate("/");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
     const user = document.cookie
       .split("; ")
       .find((cookie) => cookie.startsWith("user="))
