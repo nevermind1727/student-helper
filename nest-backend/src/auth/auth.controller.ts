@@ -48,7 +48,7 @@ export class AuthController {
       httpOnly: true,
     });
     console.log('user before', user);
-    res.redirect('https://student-helper-react.onrender.com');
+    res.redirect('https://student-helper-two.vercel.app/');
     console.log('user after', user);
   }
 
@@ -66,7 +66,7 @@ export class AuthController {
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
-    res.redirect('https://student-helper-react.onrender.com');
+    res.redirect('https://student-helper-two.vercel.app/');
   }
 
   @UseGuards(LinkedinOauthGuard)
@@ -83,7 +83,7 @@ export class AuthController {
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
-    res.redirect('https://student-helper-react.onrender.com');
+    res.redirect('https://student-helper-two.vercel.app/');
   }
 
   @UseGuards(JwtAuthGuard)
