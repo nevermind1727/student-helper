@@ -27,11 +27,15 @@ function App() {
   const [getAuth] = useGetAuthMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const user = getCookie("user");
-  if (user) {
-    dispatch(setAuthUser({ user: JSON.parse(user) }));
-    console.log(user);
-  }
+  useEffect(() => {
+    const user = getCookie("user");
+    if (user) {
+      dispatch(setAuthUser({ user: JSON.parse(user) }));
+      console.log(user);
+    } else {
+      return;
+    }
+  }, []);
   return <Routes />;
 }
 
