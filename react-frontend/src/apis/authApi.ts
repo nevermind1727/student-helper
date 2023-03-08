@@ -21,7 +21,17 @@ export const authApi = createApi({
         method: "POST",
       }),
     }),
+    getAuth: builder.mutation<User, undefined>({
+      query: () => ({
+        url: "/getAuth",
+        method: "POST",
+      }),
+    }),
   }),
 });
 
-export const { useSignInUserMutation, useLogoutUserMutation } = authApi;
+export const {
+  useSignInUserMutation,
+  useLogoutUserMutation,
+  useGetAuthMutation,
+} = authApi;

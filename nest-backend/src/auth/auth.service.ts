@@ -27,10 +27,10 @@ export class AuthService {
     };
   }
 
-  async generateToken(user: UserResponse): Promise<any> {
+  generateToken(user: UserResponse): any {
     const payload: JwtPayload = { sub: user._id, username: user.username };
     return {
-      access_token: this.jwtService.signAsync(payload),
+      access_token: this.jwtService.sign(payload),
     };
   }
 }

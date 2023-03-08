@@ -20,7 +20,7 @@ export class AuthController {
     @GetUser() user: UserResponse,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const { access_token } = await this.authService.generateToken(user);
+    const { access_token } = this.authService.generateToken(user);
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
@@ -43,7 +43,7 @@ export class AuthController {
     @GetUser() user: UserResponse,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const { access_token } = await this.authService.generateToken(user);
+    const { access_token } = this.authService.generateToken(user);
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
@@ -60,7 +60,7 @@ export class AuthController {
     @GetUser() user: UserResponse,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const { access_token } = await this.authService.generateToken(user);
+    const { access_token } = this.authService.generateToken(user);
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
@@ -77,7 +77,7 @@ export class AuthController {
     @GetUser() user: UserResponse,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const { access_token } = await this.authService.generateToken(user);
+    const { access_token } = this.authService.generateToken(user);
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
@@ -92,5 +92,14 @@ export class AuthController {
       httpOnly: true,
     });
     return;
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('/getAuth')
+  async getAuth(
+    @GetUser() user: UserResponse,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    res.send(user);
   }
 }
