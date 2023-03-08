@@ -104,21 +104,21 @@ const SignUpForm = () => {
 
   const handleGoogleSignUp = () => {
     window.open(
-      "https://student-helper-backend.onrender.com/auth/google",
+      "https://student-helper-production.up.railway.app/auth/google",
       "_self"
     );
   };
 
   const handleFacebookSignUp = () => {
     window.open(
-      "https://student-helper-backend.onrender.com/auth/facebook",
+      "https://student-helper-production.up.railway.app/auth/facebook",
       "_self"
     );
   };
 
   const handleLinkedinSignUp = () => {
     window.open(
-      "https://student-helper-backend.onrender.com/auth/linkedin",
+      "https://student-helper-production.up.railway.app/auth/linkedin",
       "_self"
     );
   };

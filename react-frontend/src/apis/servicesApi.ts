@@ -8,7 +8,7 @@ import {
 export const servicesApi = createApi({
   reducerPath: "servicesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://student-helper-backend.onrender.com/generators`,
+    baseUrl: `https://student-helper-production.up.railway.app/generators`,
     credentials: "include",
   }),
   endpoints: (builder) => ({

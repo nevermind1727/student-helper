@@ -4,7 +4,7 @@ import { User } from "../utils/types";
 export const oauthApi = createApi({
   reducerPath: "oauthApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://student-helper-backend.onrender.com/auth`,
+    baseUrl: `https://student-helper-production.up.railway.app/auth`,
     credentials: "include",
     mode: "no-cors",
   }),
