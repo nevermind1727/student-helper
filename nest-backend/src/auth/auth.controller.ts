@@ -24,7 +24,7 @@ export class AuthController {
     res.cookie('jwt', access_token, {
       httpOnly: true,
     });
-    return user;
+    res.send(user);
   }
 
   @UseGuards(JwtAuthGuard)
