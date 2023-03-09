@@ -46,12 +46,16 @@ export class AuthController {
     const { access_token } = await this.authService.generateToken(user);
     res.cookie('jwt', access_token, {
       httpOnly: true,
+      sameSite: 'none',
+      secure: true,
     });
     res.cookie('user', user, {
       maxAge: 60000 * 60 * 24 * 7,
+      sameSite: 'none',
+      secure: true,
     });
     console.log('user before', user);
-    // res.redirect('https://student-helper-two.vercel.app/');
+    res.redirect('https://student-helper-two.vercel.app/');
     console.log('user after', user);
   }
 
