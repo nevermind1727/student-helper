@@ -6,7 +6,6 @@ export const oauthApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `https://student-helper-production.up.railway.app/auth`,
     credentials: "include",
-    mode: "no-cors",
   }),
   endpoints: (builder) => ({
     googleAuth: builder.mutation<User, undefined>({
