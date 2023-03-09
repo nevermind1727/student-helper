@@ -123,7 +123,6 @@ const SignInForm = () => {
               console.log("Login Failed");
             }}
           />
-          ;
         </Box>
         <Text>
           Don't have an account?{" "}

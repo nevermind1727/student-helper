@@ -19,13 +19,7 @@ let persistor = persistStore(store);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <GoogleOAuthProvider
-        clientId={`${
-          process.env!.REACT_APP_GOOGLE_CLIENT_ID
-            ? process.env!.REACT_APP_GOOGLE_CLIENT_ID
-            : "id"
-        }`}
-      >
+      <GoogleOAuthProvider clientId="25238910228-m3ic4k6dggf9c2i0d3s4vcdmlbp89t2p.apps.googleusercontent.com">
         <ChakraProvider theme={theme}>
           <Provider store={store}>
             <PersistGate persistor={persistor}>
