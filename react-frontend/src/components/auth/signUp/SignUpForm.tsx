@@ -4,7 +4,6 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  IconButton,
   Input,
   Link,
   Stack,
@@ -13,8 +12,6 @@ import {
 } from "@chakra-ui/react";
 import { FormEvent, useState } from "react";
 import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { BsFacebook, BsLinkedin } from "react-icons/bs";
 import { useSignInUserMutation } from "../../../apis/authApi";
 import { useAppDispatch } from "../../../app/hooks";
 import { User } from "../../../utils/types";
@@ -102,27 +99,6 @@ const SignUpForm = () => {
     }
   };
 
-  const handleGoogleSignUp = () => {
-    window.open(
-      "https://student-helper-production.up.railway.app/auth/google",
-      "_self"
-    );
-  };
-
-  const handleFacebookSignUp = () => {
-    window.open(
-      "https://student-helper-production.up.railway.app/auth/facebook",
-      "_self"
-    );
-  };
-
-  const handleLinkedinSignUp = () => {
-    window.open(
-      "https://student-helper-production.up.railway.app/auth/linkedin",
-      "_self"
-    );
-  };
-
   return (
     <Box
       display="flex"
@@ -173,27 +149,6 @@ const SignUpForm = () => {
           />
           <FormErrorMessage>Passwords don't match</FormErrorMessage>
         </FormControl>
-        <Text textAlign="center">or use</Text>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <IconButton
-            aria-label="Sign Up with Google"
-            size="lg"
-            icon={<FcGoogle size={32} />}
-            onClick={handleGoogleSignUp}
-          />
-          <IconButton
-            aria-label="Sign Up with Facebook"
-            size="lg"
-            icon={<BsFacebook size={32} />}
-            onClick={handleFacebookSignUp}
-          />
-          <IconButton
-            aria-label="Sign Up with LinkedIN"
-            size="lg"
-            icon={<BsLinkedin size={32} />}
-            onClick={handleLinkedinSignUp}
-          />
-        </Box>
         <Text>
           Already have an account?{" "}
           <Link

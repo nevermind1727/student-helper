@@ -9,7 +9,6 @@ import { usersApi } from "../apis/usersApi";
 import authReducer from "../features/auth/authSlice";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { oauthApi } from "../apis/oauthApi";
 import { servicesApi } from "../apis/servicesApi";
 
 const persistConfig = {
@@ -28,14 +27,12 @@ export const store = configureStore({
     auth: persistedReducer,
     [authApi.reducerPath]: authApi.reducer,
     [usersApi.reducerPath]: usersApi.reducer,
-    [oauthApi.reducerPath]: oauthApi.reducer,
     [servicesApi.reducerPath]: servicesApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false })
       .concat(authApi.middleware)
       .concat(usersApi.middleware)
-      .concat(oauthApi.middleware)
       .concat(servicesApi.middleware),
 });
 

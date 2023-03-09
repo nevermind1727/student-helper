@@ -4,22 +4,18 @@ import {
   FormLabel,
   Input,
   FormErrorMessage,
-  IconButton,
   Button,
   Box,
   Text,
   Link,
 } from "@chakra-ui/react";
 import { FormEvent, useState } from "react";
-import { BsFacebook, BsLinkedin } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
 import { Link as ReactRouterLink, useNavigate } from "react-router-dom";
 import { useSignInUserMutation } from "../../../apis/authApi";
 import { useAppDispatch } from "../../../app/hooks";
 import { setAuthUser } from "../../../features/auth/authSlice";
 import { User } from "../../../utils/types";
 import { useToast } from "@chakra-ui/react";
-import { GoogleLogin } from "@react-oauth/google";
 
 const SignInForm = () => {
   const [username, setUsername] = useState<string>("");
@@ -113,17 +109,6 @@ const SignInForm = () => {
           />
           <FormErrorMessage>Password is required.</FormErrorMessage>
         </FormControl>
-        <Text textAlign="center">or use</Text>
-        <Box>
-          <GoogleLogin
-            onSuccess={(credentialResponse) => {
-              console.log(credentialResponse);
-            }}
-            onError={() => {
-              console.log("Login Failed");
-            }}
-          />
-        </Box>
         <Text>
           Don't have an account?{" "}
           <Link
