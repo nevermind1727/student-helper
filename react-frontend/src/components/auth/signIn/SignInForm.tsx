@@ -114,15 +114,17 @@ const SignInForm = () => {
           <FormErrorMessage>Password is required.</FormErrorMessage>
         </FormControl>
         <Text textAlign="center">or use</Text>
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-        />
-        ;
+        <Box>
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              console.log(credentialResponse);
+            }}
+            onError={() => {
+              console.log("Login Failed");
+            }}
+          />
+          ;
+        </Box>
         <Text>
           Don't have an account?{" "}
           <Link
