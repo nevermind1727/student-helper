@@ -55,8 +55,8 @@ export class AuthController {
       secure: true,
     });
     console.log('user before', user);
-    res.redirect('https://student-helper-two.vercel.app');
     console.log('user after', user);
+    return res.redirect('https://student-helper-two.vercel.app');
   }
 
   @UseGuards(FacebookOauthGuard)
