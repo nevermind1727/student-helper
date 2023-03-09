@@ -44,16 +44,9 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
   ) {
     const { access_token } = await this.authService.generateToken(user);
-    res.cookie('jwt', access_token, {
-      httpOnly: true,
-      sameSite: 'none',
-      secure: true,
-    });
-    res.cookie('user', user, {
-      maxAge: 60000 * 60 * 24 * 7,
-      sameSite: 'none',
-      secure: true,
-    });
+    res.setHeader('Set-Cookie', [
+      `user=${user}; SameSite=None; Secure', 'jwt=${access_token}; SameSite=None; Secure`,
+    ]);
     console.log('user before', user);
     console.log('user after', user);
     return res.redirect('https://student-helper-two.vercel.app');
