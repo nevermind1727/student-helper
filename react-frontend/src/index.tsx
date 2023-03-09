@@ -10,6 +10,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -18,13 +19,21 @@ let persistor = persistStore(store);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ChakraProvider theme={theme}>
-        <Provider store={store}>
-          <PersistGate persistor={persistor}>
-            <App />
-          </PersistGate>
-        </Provider>
-      </ChakraProvider>
+      <GoogleOAuthProvider
+        clientId={`${
+          process.env!.REACT_APP_GOOGLE_CLIENT_ID
+            ? process.env!.REACT_APP_GOOGLE_CLIENT_ID
+            : "id"
+        }`}
+      >
+        <ChakraProvider theme={theme}>
+          <Provider store={store}>
+            <PersistGate persistor={persistor}>
+              <App />
+            </PersistGate>
+          </Provider>
+        </ChakraProvider>
+      </GoogleOAuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

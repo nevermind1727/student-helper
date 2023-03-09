@@ -19,6 +19,7 @@ import { useAppDispatch } from "../../../app/hooks";
 import { setAuthUser } from "../../../features/auth/authSlice";
 import { User } from "../../../utils/types";
 import { useToast } from "@chakra-ui/react";
+import { GoogleLogin } from "@react-oauth/google";
 
 const SignInForm = () => {
   const [username, setUsername] = useState<string>("");
@@ -75,27 +76,6 @@ const SignInForm = () => {
     }
   };
 
-  const handleGoogleSignIn = () => {
-    window.open(
-      "https://student-helper-production.up.railway.app/auth/google",
-      "_self"
-    );
-  };
-
-  const handleFacebookSignIn = () => {
-    window.open(
-      "https://student-helper-production.up.railway.app/auth/facebook",
-      "_self"
-    );
-  };
-
-  const handleLinkedinSignIn = () => {
-    window.open(
-      "https://student-helper-production.up.railway.app/auth/linkedin",
-      "_self"
-    );
-  };
-
   return (
     <Box
       display="flex"
@@ -134,26 +114,15 @@ const SignInForm = () => {
           <FormErrorMessage>Password is required.</FormErrorMessage>
         </FormControl>
         <Text textAlign="center">or use</Text>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <IconButton
-            aria-label="Sign In with Google"
-            size="lg"
-            icon={<FcGoogle size={32} />}
-            onClick={handleGoogleSignIn}
-          />
-          <IconButton
-            aria-label="Sign In with Facebook"
-            size="lg"
-            icon={<BsFacebook size={32} />}
-            onClick={handleFacebookSignIn}
-          />
-          <IconButton
-            aria-label="Sign In with Linkedin"
-            size="lg"
-            icon={<BsLinkedin size={32} />}
-            onClick={handleLinkedinSignIn}
-          />
-        </Box>
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
+            console.log(credentialResponse);
+          }}
+          onError={() => {
+            console.log("Login Failed");
+          }}
+        />
+        ;
         <Text>
           Don't have an account?{" "}
           <Link

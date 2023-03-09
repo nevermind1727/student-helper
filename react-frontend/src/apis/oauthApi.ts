@@ -6,7 +6,6 @@ export const oauthApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `https://student-helper-production.up.railway.app/auth`,
     credentials: "include",
-    mode: "no-cors",
   }),
   endpoints: (builder) => ({
     googleAuth: builder.mutation<User, undefined>({
@@ -15,23 +14,7 @@ export const oauthApi = createApi({
         method: "GET",
       }),
     }),
-    facebookAuth: builder.mutation<User, undefined>({
-      query: () => ({
-        url: "/facebook",
-        method: "GET",
-      }),
-    }),
-    linkedinAuth: builder.mutation<User, undefined>({
-      query: () => ({
-        url: "/linkedin",
-        method: "GET",
-      }),
-    }),
   }),
 });
 
-export const {
-  useGoogleAuthMutation,
-  useFacebookAuthMutation,
-  useLinkedinAuthMutation,
-} = oauthApi;
+export const { useGoogleAuthMutation } = oauthApi;
