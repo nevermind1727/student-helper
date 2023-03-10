@@ -40,5 +40,9 @@ Backend:
 I want to emphisize that this is only a MVP version of the project, meaning, there may be some bugs and flaws. 
 However, I will work on improving the project, adding new features and fixing bugs.
 <br>
-##### Basic Plan for Project Improvement:
-  * 
+### Basic Plan for Project Improvement:
+  * Add OAuth 2.0 social login with Google, Facebook, LinkedIn. I tried to implement this functionality in Nest JS using Passport, everything worked fine locally, but production started to have problems, so I had to refuse it. I will implement this functionality with react-oauth package.
+  * Add more services. I'm going to add some services like English to other languages, Translator difficult text into simpler concepts, Generate an outline for a research topic etc.
+  * Add functionality to save results. Create profiles for each user, where they can check their history of using services, and grab results of each.
+  * Redeploy an application to AWS or Google Clouds. Deploy it on more complex service, because backend part of an application deployed to railways only for deomnstrational purposes.
+  * Create new Helpers, like Programmer Helper, Interviewer Helper etc. And collaborate this services with each other and create microservice architecture project.
