@@ -7,7 +7,7 @@ ground up. This application can help you if you are studying in school or univer
 This allows you to save time on solving routine tasks.
 Student Helper provides you 3 main services: Study Notes Creator, Grammar Correction, Essay Generator. Let's look at each one in more detail.
 <br>
-Project link - https://student-helper-two.vercel.app
+Project link - https://student-helperai.netlify.app/
 <br>
 ### Study Notes Creator
 You need to specify the number of key points and the topic, then OpenAI will generate study notes based on your prompt. 
@@ -41,7 +41,7 @@ I want to emphisize that this is only a MVP version of the project, meaning, the
 However, I will work on improving the project, adding new features and fixing bugs.
 <br>
 ### Basic Plan for Project Improvement:
-  * Add OAuth 2.0 social login with Google, Facebook, LinkedIn. I tried to implement this functionality in Nest JS using Passport, everything worked fine locally, but production started to have problems, so I had to refuse it. I will implement this functionality with react-oauth package.
+  * Add OAuth 2.0 social login with Facebook, LinkedIn. I tried to implement this functionality in Nest JS using Passport, everything worked fine locally, but production started to have problems, so I had to refuse it. I will implement this functionality with react-oauth package.
   * Add more services. I'm going to add some services like English to other languages, Translator difficult text into simpler concepts, Generate an outline for a research topic etc.
   * Add functionality to save results. Create profiles for each user, where they can check their history of using services, and grab results of each.
   * Redeploy an application to AWS or Google Clouds. Deploy it on more complex service, because backend part of an application deployed to railways only for deomnstrational purposes.
