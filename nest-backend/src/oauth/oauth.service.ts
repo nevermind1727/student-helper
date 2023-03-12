@@ -31,6 +31,7 @@ export class OauthService {
       .email.substring(0, ticketEmail.indexOf('@'));
     const newUser: UserResponse = { _id: newId, username };
     const { access_token } = await this.authService.generateToken(newUser);
+    console.log(access_token);
     res.cookie('jwt', access_token, {
       httpOnly: true,
       secure: true,
