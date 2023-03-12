@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
+import { Controller, Post, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
 import { GetUser } from 'src/decorators/get-user.decorator';
 import { UserResponse } from 'src/utils/types';

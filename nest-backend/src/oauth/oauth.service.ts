@@ -33,6 +33,7 @@ export class OauthService {
     const { access_token } = await this.authService.generateToken(newUser);
     res.cookie('jwt', access_token, {
       httpOnly: true,
+      secure: true,
     });
     return newUser;
   }
