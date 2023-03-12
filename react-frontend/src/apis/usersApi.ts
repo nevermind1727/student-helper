@@ -4,7 +4,7 @@ import { SignInUserParams, User } from "../utils/types";
 export const usersApi = createApi({
   reducerPath: "usersApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://student-helper-production.up.railway.app/users`,
+    baseUrl: `${process.env.REACT_APP_BACKEND_URL}/users`,
     // credentials: "include",
   }),
   endpoints: (builder) => ({

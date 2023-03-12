@@ -1,4 +1,4 @@
-import { Box, Button, Text, Stack, useToast, Image } from "@chakra-ui/react";
+import { Box, Button, Text, Stack, useToast } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogoutUserMutation } from "../apis/authApi";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
@@ -10,6 +10,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [logoutUser] = useLogoutUserMutation();
+  const toast = useToast();
 
   const handleSignUp = () => navigate("/auth/signUp");
   const handleSignIn = () => navigate("/auth/signIn");
@@ -17,8 +18,14 @@ const Navbar = () => {
     logoutUser(undefined)
       .unwrap()
       .then()
-      .catch((err) => {
-        console.log(err);
+      .catch((err: any) => {
+        toast({
+          title: "Error Occured",
+          description: `${err.data.message}`,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
       });
     dispatch(setAuthUser({ user: null }));
   };

@@ -16,6 +16,8 @@ import { useAppDispatch } from "../../../app/hooks";
 import { setAuthUser } from "../../../features/auth/authSlice";
 import { User } from "../../../utils/types";
 import { useToast } from "@chakra-ui/react";
+import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleAuthMutation } from "../../../apis/oauthApi";
 
 const SignInForm = () => {
   const [username, setUsername] = useState<string>("");
@@ -25,6 +27,7 @@ const SignInForm = () => {
   const [isPasswordErrored, setIsPasswordErrored] = useState<boolean>(false);
 
   const [signInUser] = useSignInUserMutation();
+  const [googleAuth] = useGoogleAuthMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const toast = useToast();
@@ -45,41 +48,53 @@ const SignInForm = () => {
     } else {
       setIsPasswordErrored(false);
     }
-    try {
-      signInUser({ username, password })
-        .unwrap()
-        .then((payload: User) => {
-          console.log(payload);
-          dispatch(
-            setAuthUser({
-              user: payload,
-            })
-          );
-          navigate("/");
-        })
-        .catch((err: any) => {
-          toast({
-            title: "Error Occured",
-            description: `${err.data.message}`,
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-          });
-          console.log(err.data.message);
+    signInUser({ username, password })
+      .unwrap()
+      .then((payload: User) => {
+        dispatch(
+          setAuthUser({
+            user: payload,
+          })
+        );
+        navigate("/");
+      })
+      .catch((err: any) => {
+        toast({
+          title: "Error Occured",
+          description: `${err.data.message}`,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
         });
-    } catch (err: any) {
-      console.log(err.message);
-    }
+      });
+  };
+
+  const handleGoogleLogin = (credentialResponse: any) => {
+    googleAuth({ token: credentialResponse.credential })
+      .unwrap()
+      .then((payload: any) => {
+        dispatch(setAuthUser({ user: payload }));
+        navigate("/");
+      })
+      .catch((err: any) => {
+        toast({
+          title: "Error Occured",
+          description: `${err.data.message}`,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      });
   };
 
   return (
     <Box
       display="flex"
-      justifyContent="center"
       alignItems="center"
       flexDirection="column"
       h="100vh"
       gap={8}
+      pt="20px"
     >
       <Text fontSize="4xl">Student Helper</Text>
       <Stack gap={2}>
@@ -109,6 +124,10 @@ const SignInForm = () => {
           />
           <FormErrorMessage>Password is required.</FormErrorMessage>
         </FormControl>
+        <Text textAlign="center">or use</Text>
+        <Stack>
+          <GoogleLogin onSuccess={handleGoogleLogin} />
+        </Stack>
         <Text>
           Don't have an account?{" "}
           <Link

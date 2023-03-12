@@ -19,3 +19,7 @@ export type EssayGeneratorParams = {
   sentences: number;
   subject: string;
 };
+
+export type GoogleAuthParams = {
+  token?: string;
+};

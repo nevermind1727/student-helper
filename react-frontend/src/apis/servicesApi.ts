@@ -8,7 +8,7 @@ import {
 export const servicesApi = createApi({
   reducerPath: "servicesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://student-helper-production.up.railway.app/generators`,
+    baseUrl: `${process.env.REACT_APP_BACKEND_URL}/generators`,
     credentials: "include",
   }),
   endpoints: (builder) => ({

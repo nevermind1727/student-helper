@@ -4,8 +4,6 @@ import {
   Box,
   Text,
   Button,
-  Textarea,
-  Container,
   NumberInput,
   NumberInputField,
   NumberDecrementStepper,
@@ -28,7 +26,6 @@ const GrammarCorrection = () => {
     essayGenerator({ sentences, subject })
       .unwrap()
       .then((payload: any) => {
-        console.log(payload);
         setOutput(payload.text.replaceAll("\n", "<br />"));
       })
       .catch((err: any) => {
@@ -39,7 +36,6 @@ const GrammarCorrection = () => {
           duration: 5000,
           isClosable: true,
         });
-        console.log(err.data.message);
       });
   };
   return (

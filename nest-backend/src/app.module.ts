@@ -4,10 +4,12 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { GeneratorsModule } from './generators/generators.module';
+import { OauthModule } from './oauth/oauth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
+      envFilePath: '.env.development',
       isGlobal: true,
     }),
     MongooseModule.forRootAsync({
@@ -23,6 +25,8 @@ import { GeneratorsModule } from './generators/generators.module';
     AuthModule,
 
     GeneratorsModule,
+
+    OauthModule,
   ],
   controllers: [],
   providers: [],

@@ -28,7 +28,6 @@ export class GeneratorsService {
       const response = await this.openAi.createCompletion(params);
       return response.data.choices[0];
     } catch (err) {
-      console.log(err);
       throw new Error(err.message);
     }
   }
@@ -44,20 +43,17 @@ export class GeneratorsService {
       const response = await this.openAi.createCompletion(params);
       return response.data.choices[0];
     } catch (err) {
-      console.log(err);
       throw new Error(err.message);
     }
   }
 
   async essayGenerator({ sentences, subject }: EssayGeneratorDto) {
     try {
-      console.log(sentences);
-      console.log(subject);
       const params: CreateCompletionRequest = {
-        model: 'text-davinci-002',
-        prompt: `Generate me creative essay consisting of ${sentences} sentences on the topic of: "${subject}"`,
+        model: 'text-davinci-003',
+        prompt: `Generate me creative text consisting of ${sentences} sentences on the topic of: "${subject}". It should be a text, not list of points.`,
         max_tokens: 2000,
-        temperature: 0.3,
+        temperature: 0.5,
         top_p: 1.0,
         frequency_penalty: 0.0,
         presence_penalty: 0.0,
@@ -65,7 +61,6 @@ export class GeneratorsService {
       const response = await this.openAi.createCompletion(params);
       return response.data.choices[0];
     } catch (err) {
-      console.log(err);
       throw new Error(err.message);
     }
   }

@@ -17,6 +17,8 @@ import { useAppDispatch } from "../../../app/hooks";
 import { User } from "../../../utils/types";
 import { setAuthUser } from "../../../features/auth/authSlice";
 import { useCreateUserMutation } from "../../../apis/usersApi";
+import { useGoogleAuthMutation } from "../../../apis/oauthApi";
+import { GoogleLogin } from "@react-oauth/google";
 
 const SignUpForm = () => {
   const [username, setUsername] = useState<string>("");
@@ -31,6 +33,7 @@ const SignUpForm = () => {
 
   const [createUser] = useCreateUserMutation();
   const [signInUser] = useSignInUserMutation();
+  const [googleAuth] = useGoogleAuthMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const toast = useToast();
@@ -58,45 +61,56 @@ const SignUpForm = () => {
     } else {
       setIsConfirmPasswordErrored(false);
     }
-
-    try {
-      await createUser({ username, password })
-        .unwrap()
-        .then((payload) => {
-          signInUser({ username, password })
-            .unwrap()
-            .then((payload: User) => {
-              console.log(payload);
-              dispatch(
-                setAuthUser({
-                  user: payload,
-                })
-              );
-              navigate("/");
-            })
-            .catch((err: any) => {
-              toast({
-                title: "Error Occured",
-                description: `${err.data.message}`,
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-              });
-              console.log(err.data.message);
+    await createUser({ username, password })
+      .unwrap()
+      .then((payload) => {
+        signInUser({ username, password })
+          .unwrap()
+          .then((payload: User) => {
+            dispatch(
+              setAuthUser({
+                user: payload,
+              })
+            );
+            navigate("/");
+          })
+          .catch((err: any) => {
+            toast({
+              title: "Error Occured",
+              description: `${err.data.message}`,
+              status: "error",
+              duration: 5000,
+              isClosable: true,
             });
-        })
-        .catch((err: any) => {
-          toast({
-            title: "Error Occured",
-            description: `${err.data.message}`,
-            status: "error",
-            duration: 5000,
-            isClosable: true,
           });
+      })
+      .catch((err: any) => {
+        toast({
+          title: "Error Occured",
+          description: `${err.data.message}`,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
         });
-    } catch (err: any) {
-      console.log(err);
-    }
+      });
+  };
+
+  const handleGoogleLogin = (credentialResponse: any) => {
+    googleAuth({ token: credentialResponse.credential })
+      .unwrap()
+      .then((payload: any) => {
+        dispatch(setAuthUser({ user: payload }));
+        navigate("/");
+      })
+      .catch((err: any) => {
+        toast({
+          title: "Error Occured",
+          description: `${err.data.message}`,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      });
   };
 
   return (
@@ -106,7 +120,7 @@ const SignUpForm = () => {
       flexDirection="column"
       h="100vh"
       gap={8}
-      pt="100px"
+      pt="20px"
     >
       <Text fontSize="4xl">Student Helper</Text>
       <Stack gap={2}>
@@ -149,6 +163,10 @@ const SignUpForm = () => {
           />
           <FormErrorMessage>Passwords don't match</FormErrorMessage>
         </FormControl>
+        <Text textAlign="center">or use</Text>
+        <Box>
+          <GoogleLogin onSuccess={handleGoogleLogin} />
+        </Box>
         <Text>
           Already have an account?{" "}
           <Link

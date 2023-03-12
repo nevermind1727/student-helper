@@ -16,17 +16,7 @@ export class AuthController {
     @GetUser() user: UserResponse,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const { access_token } = await this.authService.generateToken(user);
-    res.cookie('jwt', access_token, {
-      httpOnly: true,
-    });
-    res.send(user);
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('/status')
-  async getStatus(@GetUser() user) {
-    return user;
+    return this.authService.signIn(user, res);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -37,14 +27,5 @@ export class AuthController {
       httpOnly: true,
     });
     return;
-  }
-
-  // @UseGuards(JwtAuthGuard)
-  @Post('/getAuth')
-  async getAuth(
-    @GetUser() user: UserResponse,
-    @Res({ passthrough: true }) res: Response,
-  ) {
-    res.send(user);
   }
 }

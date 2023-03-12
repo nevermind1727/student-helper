@@ -8,14 +8,12 @@ import {
   Input,
   Box,
   Text,
-  Textarea,
   Button,
   Spinner,
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useStudyNotesMutation } from "../../apis/servicesApi";
-import TypingText from "../utils/TypingText";
 
 const StudyNotesCreator = () => {
   const [points, setPoints] = useState<number>(0);
@@ -28,7 +26,6 @@ const StudyNotesCreator = () => {
     studyNotes({ points, subject })
       .unwrap()
       .then((payload: any) => {
-        console.log(payload);
         setOutput(payload.text.replaceAll("\n", "<br />"));
       })
       .catch((err: any) => {
@@ -39,7 +36,6 @@ const StudyNotesCreator = () => {
           duration: 5000,
           isClosable: true,
         });
-        console.log(err.data.message);
       });
   };
   return (

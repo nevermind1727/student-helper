@@ -6,12 +6,12 @@ import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
   app.enableCors({
-    origin: 'https://student-helper-two.vercel.app',
+    origin: configService.get<string>('FRONTEND_URI'),
     credentials: true,
   });
   app.use(cookieParser());
-  const configService = app.get(ConfigService);
   const port = configService.get<number>('PORT');
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(port);

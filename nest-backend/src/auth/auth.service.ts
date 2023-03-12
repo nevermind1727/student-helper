@@ -4,6 +4,7 @@ import { JwtPayload, UserResponse } from 'src/utils/types';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { Response } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -25,6 +26,14 @@ export class AuthService {
       _id: user._id,
       username: user.username,
     };
+  }
+
+  async signIn(user: UserResponse, res: Response): Promise<UserResponse> {
+    const { access_token } = await this.generateToken(user);
+    res.cookie('jwt', access_token, {
+      httpOnly: true,
+    });
+    return user;
   }
 
   async generateToken(user: UserResponse): Promise<any> {
