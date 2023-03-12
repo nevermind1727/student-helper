@@ -8,7 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
   app.enableCors({
-    origin: 'https://spontaneous-kangaroo-0910ad.netlify.app',
+    origin: process.env.FRONTEND_URI,
     credentials: true,
   });
   app.use(cookieParser());
