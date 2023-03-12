@@ -35,6 +35,7 @@ export class OauthService {
     res.cookie('jwt', access_token, {
       httpOnly: true,
       secure: true,
+      sameSite: 'none',
     });
     return newUser;
   }
